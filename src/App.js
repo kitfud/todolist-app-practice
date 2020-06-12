@@ -3,7 +3,9 @@ import TodoList from './TodoList'
 
 
 function App() {
- const [todos,setTodos]= useState(['task1','task2'])//first state is all variables and second is funciton passed through all
+ const [todos,setTodos]= useState([
+  {id:1,name:'todo',complete:false} 
+  ])//first state is all variables and second is funciton passed through all
 
  return (
    <React.Fragment>
