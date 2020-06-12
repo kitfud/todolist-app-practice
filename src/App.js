@@ -16,7 +16,15 @@ useEffect(()=>{//reloads across page persists
 useEffect (()=>{//stores each item within a page load
 localStorage.setItem(LOCAL_STORAGE_KEY,JSON.stringify(todos))
 },[todos])
-  
+
+
+function toggleTodo(id){//toggles from complete to incomplete
+  const newTodos = [...todos]
+  const todo = newTodos.find(todo=> todo.id===id)
+  todo.complete = !todo.complete
+  setTodos(newTodos)
+}
+
 const todoNameRef = useRef()
 
  function handleAddTodo(e){
@@ -29,10 +37,11 @@ const todoNameRef = useRef()
  } 
  return (
    <React.Fragment>
-   <TodoList todos={todos}/>
+   <TodoList todos={todos} toggleTodo={toggleTodo}/>
    <input ref = {todoNameRef} type="text"/>
    <button onClick= {handleAddTodo}>Add Todo</button>
    <button>Clear Complete</button>
+   <div>{todos.filter(todo => !todo.complete).length} left to do</div>
    </React.Fragment>
 
  )
