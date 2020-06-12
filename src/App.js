@@ -40,6 +40,11 @@ const todoNameRef = useRef()
    const newTodos = todos.filter(todo=> !todo.complete)
     setTodos(newTodos);
   }
+
+  function handleClearAll(){
+    const newTodos = [];
+     setTodos(newTodos);
+   }
  
  return (
    <React.Fragment>
@@ -47,6 +52,7 @@ const todoNameRef = useRef()
    <input ref = {todoNameRef} type="text"/>
    <button onClick= {handleAddTodo}>Add Todo</button>
    <button onClick = {handleClearTodos}>  Clear Complete</button>
+   <button onClick = {handleClearAll}>  Clear All</button>
    <div>{todos.filter(todo => !todo.complete).length} left to do</div>
    </React.Fragment>
 
